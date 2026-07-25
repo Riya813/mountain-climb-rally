@@ -11,6 +11,16 @@ npm install
 npm run dev        # open the printed localhost URL
 ```
 
+## Deploy to GitHub Pages
+
+The repo ships with `.github/workflows/deploy.yml`. To publish:
+
+1. Push this project to a GitHub repo (branch `main`).
+2. In the repo: **Settings → Pages → Source: "GitHub Actions"** (one-time).
+3. Every push to `main` now builds and deploys automatically. The workflow can also be run manually from the Actions tab (`workflow_dispatch`).
+
+The game will be live at `https://<your-username>.github.io/<repo-name>/`. `vite.config.ts` uses a relative `base`, so it works under any repo name. Save data lives in the player's browser `localStorage`.
+
 Production build:
 
 ```bash
@@ -68,6 +78,16 @@ Each level pairs a unique visual theme (sky gradient, terrain palette, parallax 
 **Stars:** 3★ = finish under par with zero retries on that attempt chain · 2★ = finish within 1.5× par · 1★ = any finish. Progress (unlocks, stars, best times, best scores, mute) persists in `localStorage`.
 
 **Scoring:** distance + trick points (flips, big air, near-miss saves) × a streak combo multiplier (+0.5× per trick, 4s window) + a time bonus and remaining cargo HP on finish.
+
+## Deploy to GitHub Pages
+
+The repo ships with `.github/workflows/deploy.yml`. One-time setup:
+
+1. Create a GitHub repo and push this project to the `main` branch (`node_modules/` is not needed — CI installs from `package-lock.json`).
+2. In the repo: **Settings → Pages → Source → "GitHub Actions"**.
+3. Push to `main` (or run the workflow manually from the Actions tab). The game goes live at `https://<username>.github.io/<repo>/`.
+
+`vite.config.ts` uses `base: './'`, so the same build also works under any path on a custom domain — you can point krazic.com at it or copy `dist/` there directly.
 
 ## Architecture
 
