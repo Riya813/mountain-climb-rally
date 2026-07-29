@@ -51,6 +51,14 @@ export class MenuScene extends Phaser.Scene {
     play.setAlpha(0);
     this.tweens.add({ targets: play, alpha: 1, delay: 600, duration: 300 });
 
+    // Back to the rest of Krazic for users who land directly on this game.
+    const home = new UIButton(
+      this, cx, 540, 'KRAZIC HOME',
+      () => { window.open('https://krazic.com/', '_blank', 'noopener,noreferrer'); },
+      { width: 420, height: 70, fontSize: 28, color: PALETTE.accent },
+    );
+    home.setAlpha(0.92);
+
     const mute = this.add.text(GAME_WIDTH - 24, 24, AudioManager.instance.muted ? '🔇' : '🔊', { fontSize: '32px' })
       .setOrigin(1, 0).setInteractive({ useHandCursor: true });
     mute.on('pointerdown', () => { mute.setText(AudioManager.instance.toggleMute() ? '🔇' : '🔊'); });
