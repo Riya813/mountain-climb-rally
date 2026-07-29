@@ -1,5 +1,5 @@
 import Phaser from 'phaser';
-import { FONT, GAME_HEIGHT, GAME_WIDTH } from '../config';
+import { FONT, GAME_HEIGHT, GAME_WIDTH, PALETTE } from '../config';
 import { AudioManager } from '../systems/AudioManager';
 import { UIButton } from '../ui/Button';
 
