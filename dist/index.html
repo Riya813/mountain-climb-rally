@@ -66,13 +66,18 @@
         background: radial-gradient(ellipse at 50% 30%, #1d3a5f 0%, #0d1b2e 70%);
         overflow: hidden;
       }
-      /* Full-viewport container; Phaser's autoCenter does the centering.
-         (Flex + autoCenter margins stack and push the canvas off-center.) */
+      /* CSS centers the canvas. Zero Phaser's autoCenter margins so they
+         cannot stack and shove the game to the right. */
       #app {
         position: fixed;
         inset: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
       }
-      canvas {
+      #app canvas {
+        display: block;
+        margin: 0 !important;
         border-radius: 6px;
         touch-action: none;
       }
